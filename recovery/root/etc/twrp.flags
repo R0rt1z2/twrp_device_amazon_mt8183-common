@@ -1,0 +1,9 @@
+/system_image  emmc   /dev/block/platform/bootdevice/by-name/system      flags=display="System Image";backup=1;flashimg=1
+/vendor_image  emmc   /dev/block/platform/bootdevice/by-name/vendor      flags=display="Vendor Image";backup=1;flashimg=1
+/nvcfg         ext4   /dev/block/platform/bootdevice/by-name/nvcfg       flags=display="NVCFG";backup=1
+/persist       ext4   /dev/block/platform/bootdevice/by-name/persist     flags=display="Persist";backup=1
+
+/lk            emmc   /dev/block/platform/bootdevice/by-name/lk_real     flags=display="Bootloader";backup=1;flashimg=1
+/lk2           emmc   /dev/block/platform/bootdevice/by-name/lk2_real    flags=display="Bootloader 2";backup=1;flashimg=1
+/tee1          emmc   /dev/block/platform/bootdevice/by-name/tee1_real   flags=display="TEE1";backup=1
+/tee2          emmc   /dev/block/platform/bootdevice/by-name/tee2_real   flags=display="TEE2";backup=1

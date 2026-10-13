@@ -1,0 +1,56 @@
+#
+# Copyright (C) 2026 The Team Win Recovery Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+COMMON_PATH := device/amazon/mt8183-common
+
+include $(COMMON_PATH)/arch/$(DEVICE_ARCH).mk
+
+TARGET_USES_64_BIT_BINDER := true
+
+# Kernel
+BOARD_KERNEL_CMDLINE ?= bootopt=64S3,32N2,64N2
+BOARD_KERNEL_BASE := 0x40000000
+BOARD_KERNEL_OFFSET ?= 0x00080000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --base $(BOARD_KERNEL_BASE) --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset 0x15000000 --second_offset 0x00f00000 --tags_offset 0x14000000 --header_version 1
+
+DEVICE_KERNEL_IMAGE ?= Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/$(DEVICE_KERNEL_IMAGE)
+
+LZMA_RAMDISK_TARGETS := recovery
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_RECOVERYIMAGE_PARTITION_SIZE ?= 33554432
+
+# Platform
+TARGET_BOARD_PLATFORM := mt8183
+TARGET_BOOTLOADER_BOARD_NAME := mt8183
+TARGET_NO_BOOTLOADER := true
+
+# Recovery
+RECOVERY_VARIANT := twrp
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_RECOVERY_DEVICE_DIRS := $(COMMON_PATH) $(DEVICE_PATH)
+
+# Screen
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+# TWRP
+TW_EXCLUDE_TWRPAPP := true
+TW_EXCLUDE_SUPERSU := true
+TW_NO_HAPTICS := true
+TW_DEFAULT_BACKUP_LIST := "/system_image;/vendor_image;/data;/boot;"
+
+TW_INCLUDE_LIBRESETPROP := true
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.date.utc;ro.build.date;ro.build.fingerprint;ro.build.version.incremental"
+
+TW_INCLUDE_CRYPTO := true
+TW_CRYPTO_USE_SYSTEM_VOLD := true
+
+ALLOW_MISSING_DEPENDENCIES := true
