@@ -17,5 +17,6 @@ TARGET_SCREEN_HEIGHT := 800
 # TWRP
 TW_THEME := landscape_mdpi
 TW_ROTATION := 90
+TW_INPUT_BLACKLIST := "gpio-privacy-state"
 
 include device/amazon/mt8183-common/BoardConfigCommon.mk
