@@ -12,3 +12,6 @@ $(call inherit-product-if-exists, vendor/twrp/config/common.mk)
 
 PRODUCT_BRAND := Amazon
 PRODUCT_MANUFACTURER := Amazon
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.build.date.utc=0

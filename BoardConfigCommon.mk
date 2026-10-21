@@ -48,7 +48,7 @@ TW_NO_HAPTICS := true
 TW_DEFAULT_BACKUP_LIST := "/system_image;/vendor_image;/data;/boot;"
 
 TW_INCLUDE_LIBRESETPROP := true
-TW_OVERRIDE_SYSTEM_PROPS := "ro.build.date.utc;ro.build.date;ro.build.fingerprint;ro.build.version.incremental"
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint;ro.build.version.incremental"
 
 TW_INCLUDE_CRYPTO := true
 TW_CRYPTO_USE_SYSTEM_VOLD := true
